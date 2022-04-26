@@ -1,0 +1,43 @@
+name: 'Spring Gradle Build Action'
+description: 'Reusable GitHub Action for performing a gradle build or running a gradle task.'
+author: 'Spring'
+
+inputs:
+  java-version:
+    description: 'Version of the JDK to use to run the Gradle command. Used in the actions/setup-java step.'
+    required: false
+    default: '17'
+  distribution:
+    description: 'Distribution of the JDK to use to run the Gradle command. Used in the actions/setup-java step.'
+    required: false
+    default: 'temurin'
+  task:
+    description: 'One or more tasks of the Gradle command (e.g. clean build, :docs:asciidoctor, etc.)'
+    required: true
+  args:
+    description: 'Optional arguments of the Gradle command (e.g. --scan, -PgitHubAccessToken=xyz, -Duser.name=spring-builds+github, etc.)'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up JDK ${{ inputs.java-version }}
+      uses: actions/setup-java@v2
+      with:
+        java-version: ${{ inputs.java-version }}
+        distribution: ${{ inputs.distribution }}
+    - name: Set up gradle user name
+      shell: bash
+      run: |
+        mkdir -p ~/.gradle
+        echo 'systemProp.user.name=spring-builds+github' >> ~/.gradle/gradle.properties
+    - name: Gradle Wrapper Validation
+      uses: gradle/wrapper-validation-action@v1
+    - name: Set up Gradle
+      uses: gradle/gradle-build-action@v2
+      env:
+        GRADLE_USER_HOME: ~/.gradle
+    - name: Perform Gradle action
+      shell: bash
+      run: ./gradlew ${{ inputs.task }} ${{ inputs.args }}
