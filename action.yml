@@ -11,13 +11,9 @@ inputs:
     description: 'Distribution of the JDK to use to run the Gradle command. Used in the actions/setup-java step.'
     required: false
     default: 'temurin'
-  task:
-    description: 'One or more tasks of the Gradle command (e.g. clean build, :docs:asciidoctor, etc.)'
-    required: true
-  args:
-    description: 'Optional arguments of the Gradle command (e.g. --scan, -PgitHubAccessToken=xyz, -Duser.name=spring-builds+github, etc.)'
+  arguments:
+    description: 'Gradle command line arguments.'
     required: false
-    default: ''
 
 runs:
   using: 'composite'
@@ -36,8 +32,7 @@ runs:
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Gradle
       uses: gradle/gradle-build-action@v2
+      with:
+        arguments: ${{ inputs.arguments }}
       env:
         GRADLE_USER_HOME: ~/.gradle
-    - name: Perform Gradle action
-      shell: bash
-      run: ./gradlew ${{ inputs.task }} ${{ inputs.args }}
