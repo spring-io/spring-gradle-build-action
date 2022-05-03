@@ -16,7 +16,7 @@ Accepts the following inputs:
 
 ```yaml
 - name: Spring Gradle Build Action
-  uses: sjohnr/spring-gradle-build-action@v1
+  uses: spring-io/spring-gradle-build-action@v1
   with:
     java-version: '17'
     distribution: 'temurin'
@@ -26,7 +26,7 @@ Accepts the following inputs:
 
 ```yaml
 - uses: actions/checkout@v2
-- uses: sjohnr/spring-gradle-build-action@v1
+- uses: spring-io/spring-gradle-build-action@v1
 - name: Run tests
   run: ./gradlew test
 ```
