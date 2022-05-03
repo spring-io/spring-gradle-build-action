@@ -6,14 +6,11 @@ A composite action that combines the following steps:
 * Set up a `user.name` system property with `spring-builds+github`
 * Validate the Gradle wrapper using `gradle/wrapper-validation-action@v1`
 * Set up Gradle using `gradle/gradle-build-action@v2` with `GRADLE_USER_HOME=~/.gradle`
-* Perform a specified Gradle command (e.g. `./gradlew <task> <args>`)
 
 Accepts the following inputs:
 
 * `java-version` (Optional, defaults to `'17'`)
 * `distribution` (Optional, defaults to `'temurin'`)
-* `task` (Required)
-* `args` (Optional, defaults to `''`)
 
 ## Installation
 
@@ -23,6 +20,13 @@ Accepts the following inputs:
   with:
     java-version: '17'
     distribution: 'temurin'
-    task: 'clean build'
-    args: '--continue'
+```
+
+## Example Usage
+
+```yaml
+- uses: actions/checkout@v2
+- uses: sjohnr/spring-gradle-build-action@v1
+- name: Run tests
+  run: ./gradlew test
 ```
