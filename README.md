@@ -2,7 +2,7 @@
 
 A composite action that combines the following steps:
 
-* Set up a JDK with `actions/setup-java@v2`
+* Set up a JDK with `actions/setup-java@v3`
 * Set up a `user.name` system property with `spring-builds+github`
 * Validate the Gradle wrapper using `gradle/wrapper-validation-action@v1`
 * Set up Gradle using `gradle/gradle-build-action@v2` with `GRADLE_USER_HOME=/home/runner/.gradle`
@@ -11,6 +11,7 @@ Accepts the following inputs:
 
 * `java-version` (Optional, defaults to `'17'`)
 * `distribution` (Optional, defaults to `'temurin'`)
+* `cache` (Optional, defaults to `'gradle'`)
 
 ## Installation
 
@@ -20,6 +21,7 @@ Accepts the following inputs:
   with:
     java-version: '17'
     distribution: 'temurin'
+    cache: 'gradle'
 ```
 
 ## Example Usage
