@@ -23,11 +23,9 @@ runs:
     - name: Set up gradle user name
       shell: bash
       run: |
-        mkdir -p /home/runner/.gradle
-        echo 'systemProp.user.name=spring-builds+github' >> /home/runner/.gradle/gradle.properties
+        mkdir -p $HOME/.gradle
+        echo 'systemProp.user.name=spring-builds+github' >> $HOME/.gradle/gradle.properties
     - name: Gradle Wrapper Validation
       uses: gradle/wrapper-validation-action@v1
     - name: Set up Gradle
       uses: gradle/gradle-build-action@v2
-      env:
-        GRADLE_USER_HOME: /home/runner/.gradle
