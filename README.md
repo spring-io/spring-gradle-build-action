@@ -5,7 +5,7 @@ A composite action that combines the following steps:
 * Set up a JDK with `actions/setup-java@v3`
 * Set up a `user.name` system property with `spring-builds+github`
 * Validate the Gradle wrapper using `gradle/wrapper-validation-action@v1`
-* Set up Gradle using `gradle/gradle-build-action@v2` with `GRADLE_USER_HOME=/home/runner/.gradle`
+* Set up Gradle using `gradle/gradle-build-action@v2`
 
 Accepts the following inputs:
 
