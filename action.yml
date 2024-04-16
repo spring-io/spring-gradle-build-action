@@ -26,6 +26,6 @@ runs:
         mkdir -p $HOME/.gradle
         echo 'systemProp.user.name=spring-builds+github' >> $HOME/.gradle/gradle.properties
     - name: Gradle Wrapper Validation
-      uses: gradle/wrapper-validation-action@v3
+      uses: gradle/actions/wrapper-validation@v3
     - name: Set up Gradle
       uses: gradle/actions/setup-gradle@v3
