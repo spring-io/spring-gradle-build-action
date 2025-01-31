@@ -4,8 +4,8 @@ A composite action that combines the following steps:
 
 * Set up a JDK with `actions/setup-java@v4`
 * Set up a `user.name` system property with `spring-builds+github`
-* Validate the Gradle wrapper using `gradle/actions/wrapper-validation@v3`
-* Set up Gradle using `gradle/actions/setup-gradle@v3`
+* Validate the Gradle wrapper using `gradle/actions/wrapper-validation@v4`
+* Set up Gradle using `gradle/actions/setup-gradle@v4`
 
 Accepts the following inputs:
 
