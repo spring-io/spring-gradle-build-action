@@ -24,4 +24,4 @@ jobs:
         run: gh pr merge --auto --rebase "$PR_URL"
       - uses: actions/checkout@v4
       - name: Update v2 branch
-        run: git checkout v2 && git merge main && git push
+        run: git fetch origin && git checkout --track origin/v2 && git merge origin/main && git push origin v2
