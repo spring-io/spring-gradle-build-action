@@ -1,0 +1,16 @@
+buildscript {
+	dependencies {
+		classpath libs.org.jetbrains.kotlin.gradle.plugin
+	}
+}
+
+plugins {
+	alias(libs.plugins.io.spring.security.release)
+}
+
+springRelease {
+	repositoryOwner = "spring-io"
+	repositoryName = "spring-gradle-build-action"
+	weekOfMonth = 3
+	dayOfWeek = 1
+}

@@ -1,0 +1,14 @@
+pluginManagement {
+	repositories {
+		maven {
+			url = uri("https://repo.spring.io/snapshot")
+		}
+		gradlePluginPortal()
+	}
+}
+
+dependencyResolutionManagement {
+	repositories {
+		mavenCentral()
+	}
+}

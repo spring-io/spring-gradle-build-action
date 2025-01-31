@@ -1,0 +1,7 @@
+[versions]
+
+[libraries]
+
+[plugins]
+
+io-spring-security-release = "io.spring.security.release:1.0.4-SNAPSHOT"
