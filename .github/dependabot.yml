@@ -8,3 +8,5 @@ updates:
       interval: weekly
     labels:
       - 'type: dependency-upgrade'
+    ignore:
+      - dependency-name: 'gradle/*'
