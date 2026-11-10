@@ -11,6 +11,12 @@ inputs:
     description: 'Distribution of the JDK to use to run the Gradle command. Used in the actions/setup-java step.'
     required: false
     default: 'temurin'
+  cache-read-only:
+    description: |
+      When 'true', existing Gradle cache entries are read but none are written. Used in the gradle/actions/setup-gradle step.
+      By default this is 'false' on the GitHub default branch and 'true' on other branches, which is the default of gradle/actions/setup-gradle.
+    required: false
+    default: ${{ github.event.repository != null && github.ref_name != github.event.repository.default_branch }}
 
 runs:
   using: 'composite'
@@ -29,3 +35,5 @@ runs:
       uses: gradle/actions/wrapper-validation@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
     - name: Set up Gradle
       uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
+      with:
+        cache-read-only: ${{ inputs.cache-read-only }}

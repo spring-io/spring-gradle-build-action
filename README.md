@@ -11,6 +11,7 @@ Accepts the following inputs:
 
 * `java-version` (Optional, defaults to `'17'`)
 * `distribution` (Optional, defaults to `'temurin'`)
+* `cache-read-only` (Optional, defaults to `false` on the default branch and `true` on all others, which is the default of `gradle/actions/setup-gradle`)
 
 ## Installation
 
@@ -20,6 +21,7 @@ Accepts the following inputs:
   with:
     java-version: '17'
     distribution: 'temurin'
+    cache-read-only: false
 ```
 
 ## Example Usage
